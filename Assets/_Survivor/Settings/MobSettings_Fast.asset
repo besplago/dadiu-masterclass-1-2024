@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ab4bbbb63eec4a84a9f2a732485f0cd, type: 3}
   m_Name: MobSettings_Fast
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  acceleration: 5
+  moveSpeed: 4
+  acceleration: 3
   attackRange: 3
+  attackTelegraphDuration: 1

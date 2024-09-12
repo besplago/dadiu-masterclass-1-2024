@@ -64,7 +64,6 @@ GameObject:
   - component: {fileID: 855051818720152882}
   - component: {fileID: 7645382250310602408}
   - component: {fileID: 5042037141190084969}
-  - component: {fileID: 8691846158659867978}
   m_Layer: 0
   m_Name: Mob_Basic
   m_TagString: Untagged
@@ -103,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: f871ff7cf20a547239b1cb744350d7bd, type: 2}
-  attackTelegraph: {fileID: 8932030341472082058}
+  attackTelegraph: {fileID: 7168526173207956727}
 --- !u!143 &5042037141190084969
 CharacterController:
   m_ObjectHideFlags: 0
@@ -130,18 +129,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &8691846158659867978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5042281181445868253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 963de1fe3aa94161a9e9f6c230212dd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7648085261439119996
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,9 +270,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 9006850486674583651}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8932030341472082058 stripped
+--- !u!114 &7168526173207956727 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 507271275438057705, guid: 33a6ebc1be601d1488930775a8f72153,
+  m_CorrespondingSourceObject: {fileID: 2271356135223884948, guid: 33a6ebc1be601d1488930775a8f72153,
     type: 3}
   m_PrefabInstance: {fileID: 9006850486674583651}
   m_PrefabAsset: {fileID: 0}

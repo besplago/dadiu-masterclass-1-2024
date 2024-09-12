@@ -4,7 +4,6 @@ using UnityEngine;
 namespace _Survivor.Scripts.Mob
 {
     [RequireComponent(typeof(CharacterController))]
-    [RequireComponent(typeof(AttackTelegraph))]
     public class Mob : MonoBehaviour
     {
         public static readonly List<Mob> Actives = new();

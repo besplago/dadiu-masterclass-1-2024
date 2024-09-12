@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 219d3505a70a44415b5cc993cd9c05c7, type: 3}
   m_Name: MotorSettings
   m_EditorClassIdentifier: 
-  MaxSpeed: 20.42
+  MaxSpeed: 10
   Accelleration: 5

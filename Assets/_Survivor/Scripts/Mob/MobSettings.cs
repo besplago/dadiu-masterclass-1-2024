@@ -9,5 +9,6 @@ namespace _Survivor.Scripts.Mob
         [FormerlySerializedAs("MoveSpeed")] public float moveSpeed;
         [FormerlySerializedAs("Acceleration")] public float acceleration;
         [SerializeField] public float attackRange;
+        [FormerlySerializedAs("attackTelegraphTime")] [SerializeField] public float attackTelegraphDuration;
     }
 }
