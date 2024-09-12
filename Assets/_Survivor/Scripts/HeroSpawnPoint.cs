@@ -2,12 +2,8 @@ using UnityEngine;
 
 namespace _Survivor.Scripts
 {
-    public class HeroSpawnPoint : MonoBehaviour
+    public class HeroSpawnPoint : SpawnPoint
     {
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawCube(transform.position + Vector3.up * 0.5f, Vector3.one);
-        }
+        protected override Color GizmoColor => Color.green;
     }
 }
