@@ -1,3 +1,4 @@
+using _Survivor.Scripts;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]

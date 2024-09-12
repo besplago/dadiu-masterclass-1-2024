@@ -1,46 +1,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
-public class Mob : MonoBehaviour
+namespace _Survivor.Scripts
 {
-
-    public static List<Mob> Actives = new List<Mob>();
-
-
-
-    [SerializeField] MobSettings _settings;
-
-    CharacterController _controller;
-
-    Hero _target;
-
-    void Start()
+    [RequireComponent(typeof(CharacterController))]
+    public class Mob : MonoBehaviour
     {
-        _controller = GetComponent<CharacterController>();
-        _target = Object.FindAnyObjectByType<Hero>();
-    }
+        public static readonly List<Mob> Actives = new List<Mob>();
 
-    void OnEnable()
-    {
-        Actives.Add(this);
-    }
 
-    void OnDisable()
-    {
-        Actives.Remove(this);
-    }
-    
-    void Update()
-    {
-        if (_target != null)
+        [SerializeField] private MobSettings settings;
+
+        private CharacterController _controller;
+
+        private Hero _target;
+
+        private void Start()
         {
+            _controller = GetComponent<CharacterController>();
+            _target = Object.FindAnyObjectByType<Hero>();
+        }
+
+        private void OnEnable()
+        {
+            Actives.Add(this);
+        }
+
+        private void OnDisable()
+        {
+            Actives.Remove(this);
+        }
+
+        private void Update()
+        {
+            if (!_target) return;
             var delta = _target.transform.position - transform.position;
-            if (delta.magnitude > 0)
-            {
-                var motion = delta.normalized * Time.deltaTime * _settings.MoveSpeed;
-                _controller.Move(motion);
-            }
+            if (!(delta.magnitude > 0)) return;
+            var motion = delta.normalized * (Time.deltaTime * settings.MoveSpeed);
+            _controller.Move(motion);
         }
     }
 }
