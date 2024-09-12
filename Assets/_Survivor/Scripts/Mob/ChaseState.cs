@@ -4,11 +4,11 @@ namespace _Survivor.Scripts.Mob
 {
     public class ChaseState : IMobState
     {
-        public void EnterState(Mob mob)
+        public virtual void EnterState(Mob mob)
         {
         }
 
-        public void UpdateState(Mob mob)
+        public virtual void UpdateState(Mob mob)
         {
             if (!mob.Target) return;
 

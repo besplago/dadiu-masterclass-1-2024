@@ -10,5 +10,6 @@ namespace _Survivor.Scripts.Mob
         [SerializeField] public float attackAcceleration;
         [SerializeField] public float attackDeceleration;
         [SerializeField] public float attackMaxSpeed;
+        [SerializeField] public float attackRange;
     }
 }

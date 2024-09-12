@@ -19,3 +19,4 @@ MonoBehaviour:
   attackAcceleration: 100
   attackDeceleration: 20
   attackMaxSpeed: 100
+  attackRange: 5

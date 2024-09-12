@@ -16,9 +16,15 @@ namespace _Survivor.Scripts.Mob
         {
             _elapsedTime += Time.deltaTime;
 
-            if (_elapsedTime >= CooldownTime)
+            if (!(_elapsedTime >= CooldownTime)) return;
+            switch (mob)
             {
-                mob.ChangeState(new TelegraphingState());
+                case MobDasherShort:
+                    mob.ChangeState(new ChaseAndStopState());
+                    break;
+                case MobDasherLong:
+                    mob.ChangeState(new TelegraphingState());
+                    break;
             }
         }
 

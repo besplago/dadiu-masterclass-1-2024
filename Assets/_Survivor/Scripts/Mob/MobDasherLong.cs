@@ -2,7 +2,7 @@
 
 namespace _Survivor.Scripts.Mob
 {
-    public class MobDasher : Mob
+    public class MobDasherLong : Mob
     {
         protected override void Start()
         {
