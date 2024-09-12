@@ -6,7 +6,7 @@ namespace _Survivor.Scripts.Mob
     [RequireComponent(typeof(CharacterController))]
     public class Mob : MonoBehaviour
     {
-        public static readonly List<Mob> Actives = new List<Mob>();
+        public static readonly List<Mob> Actives = new();
 
         [SerializeField] private MobSettings settings;
 
@@ -18,7 +18,6 @@ namespace _Survivor.Scripts.Mob
             set
             {
                 _currentState?.ExitState(this);
-
                 _currentState = value;
                 _currentState.EnterState(this);
             }

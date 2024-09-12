@@ -6,7 +6,7 @@ namespace _Survivor.Scripts.Mob
     {
         public void EnterState(Mob mob)
         {
-            Debug.Log(this + " is within range of the player, it will now attack!");
+            Debug.Log(mob.name + " is within range of the player, it will now attack!");
         }
 
         public void UpdateState(Mob mob)
