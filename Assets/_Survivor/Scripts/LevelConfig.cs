@@ -18,14 +18,17 @@ namespace _Survivor.Scripts
                 SceneManager.LoadScene("Game", LoadSceneMode.Single);
             }
 
-            var asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-            if (asyncLoad != null)
+            if (!SceneManager.GetSceneByName(sceneName).isLoaded)
             {
-                asyncLoad.allowSceneActivation = true;
-
-                while (!asyncLoad.isDone)
+                var asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+                if (asyncLoad != null)
                 {
-                    await Task.Yield();
+                    asyncLoad.allowSceneActivation = true;
+
+                    while (!asyncLoad.isDone)
+                    {
+                        await Task.Yield();
+                    }
                 }
             }
 
