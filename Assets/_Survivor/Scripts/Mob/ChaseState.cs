@@ -15,12 +15,6 @@ namespace _Survivor.Scripts.Mob
             var delta = mob.Target.transform.position - mob.transform.position;
             var distance = delta.magnitude;
 
-            if (distance <= mob.Settings.attackRange)
-            {
-                mob.ChangeState(new TelegraphingState());
-                return;
-            }
-
             if (distance <= 0) return;
 
             var motion = delta.normalized * (Time.deltaTime * mob.Settings.moveSpeed);

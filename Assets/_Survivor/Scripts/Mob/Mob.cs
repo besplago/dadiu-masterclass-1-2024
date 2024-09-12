@@ -29,11 +29,15 @@ namespace _Survivor.Scripts.Mob
         public Hero Target { get; private set; }
         public Vector3 DashTarget { get; set; }
 
-        public MobSettings Settings => settings;
+        public MobSettings Settings
+        {
+            get => settings;
+            protected set => settings = value;
+        }
 
         public AttackTelegraph AttackTelegraph { get; private set; }
 
-        private void Start()
+        protected virtual void Start()
         {
             Controller = GetComponent<CharacterController>();
             Target = FindAnyObjectByType<Hero>();

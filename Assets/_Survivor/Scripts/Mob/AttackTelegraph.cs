@@ -8,7 +8,7 @@ namespace _Survivor.Scripts.Mob
         private Renderer _telegraphRenderer;
         private Transform _parentTransform;
         private const float ExtraTelegraphLength = 3.0f;
-        private Mob _mob;
+        private MobDasherSettings _dasherSettings;
 
         private void Awake()
         {
@@ -18,18 +18,19 @@ namespace _Survivor.Scripts.Mob
 
         public void PlayAttackTelegraphAnimation(Mob mob)
         {
-            _mob = mob;
             _telegraphRenderer.enabled = true;
-            SetTelegraphVisual();
-            StartCoroutine(BlinkAnimation(_mob.Settings.attackTelegraphDuration));
+            SetTelegraphVisual(mob);
+            _dasherSettings = mob.Settings as MobDasherSettings;
+            if (_dasherSettings) StartCoroutine(BlinkAnimation(_dasherSettings.attackTelegraphDuration));
         }
 
-        private void SetTelegraphVisual()
+        private void SetTelegraphVisual(Mob mob)
         {
             transform.position = _parentTransform.position;
-            var directionToTarget = _mob.Target.transform.position - transform.position;
+            var directionToTarget = mob.Target.transform.position - transform.position;
             transform.position += directionToTarget * (0.5f + ExtraTelegraphLength / 10.0f);
-            var newMagnitude = directionToTarget.magnitude + _mob.Settings.extraTelegraphLength;
+            if (!_dasherSettings) return;
+            var newMagnitude = directionToTarget.magnitude + _dasherSettings.extraTelegraphLength;
             transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, newMagnitude);
             transform.LookAt(transform.position +
                              directionToTarget.normalized * (newMagnitude - directionToTarget.magnitude));

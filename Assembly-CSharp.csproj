@@ -49,8 +49,10 @@
     <Compile Include="Assets\_Survivor\Scripts\Mob\IMobState.cs" />
     <Compile Include="Assets\_Survivor\Scripts\LevelConfig.cs" />
     <Compile Include="Assets\_Survivor\Scripts\Mob\AttackState.cs" />
+    <Compile Include="Assets\_Survivor\Scripts\Mob\MobDasherSettings.cs" />
     <Compile Include="Assets\_Survivor\Scripts\MobSpawnPoint.cs" />
     <Compile Include="Assets\_Survivor\Scripts\HeroMotorSettings.cs" />
+    <Compile Include="Assets\_Survivor\Scripts\Mob\MobDasher.cs" />
     <Compile Include="Assets\_Survivor\Scripts\LevelLoader.cs" />
     <Compile Include="Assets\_Survivor\Scripts\Mob\ChaseState.cs" />
     <Compile Include="Assets\_Survivor\Scripts\HealthUI.cs" />

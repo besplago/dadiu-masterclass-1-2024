@@ -18,7 +18,7 @@ namespace _Survivor.Scripts.Mob
 
             if (_elapsedTime >= CooldownTime)
             {
-                mob.ChangeState(new ChaseState());
+                mob.ChangeState(new TelegraphingState());
             }
         }
 
