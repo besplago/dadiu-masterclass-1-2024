@@ -1,19 +1,20 @@
 ﻿namespace _Survivor.Scripts.Mob
 {
-    public class AttackState : IMobState
+    public class CooldownState : IMobState
     {
         public void EnterState(Mob mob)
         {
-            mob.AttackTelegraph.PlayAttackTelegraphAnimation(mob);
+            throw new System.NotImplementedException();
         }
 
         public void UpdateState(Mob mob)
         {
+            throw new System.NotImplementedException();
         }
-
 
         public void ExitState(Mob mob)
         {
+            throw new System.NotImplementedException();
         }
     }
 }

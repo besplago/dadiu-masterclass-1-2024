@@ -54,6 +54,7 @@
     <Compile Include="Assets\_Survivor\Scripts\LevelLoader.cs" />
     <Compile Include="Assets\_Survivor\Scripts\Mob\ChaseState.cs" />
     <Compile Include="Assets\_Survivor\Scripts\HealthUI.cs" />
+    <Compile Include="Assets\_Survivor\Scripts\Mob\CooldownState.cs" />
     <Compile Include="Assets\_Survivor\Scripts\SpawnPoint.cs" />
     <Compile Include="Assets\_Survivor\Scripts\Mob\MobSettings.cs" />
     <Compile Include="Assets\_Survivor\Scripts\HeroSpawnPoint.cs" />

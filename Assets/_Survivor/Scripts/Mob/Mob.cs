@@ -9,7 +9,6 @@ namespace _Survivor.Scripts.Mob
         public static readonly List<Mob> Actives = new();
 
         [SerializeField] private MobSettings settings;
-        [SerializeField] public AttackTelegraph attackTelegraph;
 
         private IMobState _currentState;
 
@@ -31,10 +30,13 @@ namespace _Survivor.Scripts.Mob
 
         public MobSettings Settings => settings;
 
+        public AttackTelegraph AttackTelegraph { get; private set; }
+
         private void Start()
         {
             Controller = GetComponent<CharacterController>();
             Target = FindAnyObjectByType<Hero>();
+            AttackTelegraph = GetComponentInChildren<AttackTelegraph>();
 
             CurrentState = new ChaseState();
         }
