@@ -1,24 +1,43 @@
-using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[CreateAssetMenu(menuName = "Game/Level")]
-public class LevelConfig : ScriptableObject
+namespace _Survivor.Scripts
 {
-    public string SceneName;
-
-
-    public async void LoadLevel()
+    [CreateAssetMenu(menuName = "Game/Level")]
+    public class LevelConfig : ScriptableObject
     {
-        Debug.Log("Loading level " + name, this);
-        SceneManager.LoadScene("Game", LoadSceneMode.Single);
-        SceneManager.LoadScene(SceneName, LoadSceneMode.Additive);
-        var scene = SceneManager.GetSceneByName(SceneName);
-        while (!scene.isLoaded)
+        public string sceneName;
+
+        public async void LoadLevel()
         {
-            await Task.Yield();
+            Debug.Log("Loading level " + name, this);
+
+            if (!SceneManager.GetSceneByName("Game").isLoaded)
+            {
+                SceneManager.LoadScene("Game", LoadSceneMode.Single);
+            }
+
+            var asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            if (asyncLoad != null)
+            {
+                asyncLoad.allowSceneActivation = true;
+
+                while (!asyncLoad.isDone)
+                {
+                    await Task.Yield();
+                }
+            }
+
+            var gameScene = SceneManager.GetSceneByName("Game");
+            if (gameScene.IsValid())
+            {
+                SceneManager.SetActiveScene(gameScene);
+            }
+            else
+            {
+                Debug.LogWarning("Game Scene is not loaded");
+            }
         }
-        bool loaded = SceneManager.SetActiveScene(scene);
     }
 }

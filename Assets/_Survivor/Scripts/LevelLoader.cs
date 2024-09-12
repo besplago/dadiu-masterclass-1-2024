@@ -1,16 +1,17 @@
 using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
-public class LevelLoader : MonoBehaviour
+namespace _Survivor.Scripts
 {
-    public LevelConfig Level;
-
-    void Awake()
+    public class LevelLoader : MonoBehaviour
     {
-        Assert.IsNotNull(Level, "Missing Level");
-        Level.LoadLevel();
+        [FormerlySerializedAs("Level")] public LevelConfig level;
+
+        private void Awake()
+        {
+            Assert.IsNotNull(level, "Missing Level");
+            level.LoadLevel();
+        }
     }
-
-
 }
