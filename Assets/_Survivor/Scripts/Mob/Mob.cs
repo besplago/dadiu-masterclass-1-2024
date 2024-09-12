@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace _Survivor.Scripts
+namespace _Survivor.Scripts.Mob
 {
     [RequireComponent(typeof(CharacterController))]
     public class Mob : MonoBehaviour

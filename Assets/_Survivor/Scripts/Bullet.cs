@@ -1,4 +1,5 @@
 using _Survivor.Scripts;
+using _Survivor.Scripts.Mob;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
