@@ -2,8 +2,8 @@
 {
     public interface IMobState
     {
-        void EnterState(Scripts.Mob.Mob mob);
-        void UpdateState(Scripts.Mob.Mob mob);
-        void ExitState(Scripts.Mob.Mob mob);
+        void EnterState(Mob mob);
+        void UpdateState(Mob mob);
+        void ExitState(Mob mob);
     }
 }
