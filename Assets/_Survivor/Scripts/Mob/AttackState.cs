@@ -6,6 +6,7 @@ namespace _Survivor.Scripts.Mob
     {
         public void EnterState(Mob mob)
         {
+            mob.attackTelegraph.PlayAttackTelegraphAnimation(mob.Target.transform);
         }
 
         public void UpdateState(Mob mob)

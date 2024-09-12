@@ -10,10 +10,9 @@ namespace _Survivor.Scripts.Mob
         public static readonly List<Mob> Actives = new();
 
         [SerializeField] private MobSettings settings;
+        [SerializeField] public AttackTelegraph attackTelegraph;
 
         private IMobState _currentState;
-        
-        public static System.Action<IMobState> OnStateChanged;
 
         public IMobState CurrentState
         {
@@ -24,8 +23,6 @@ namespace _Survivor.Scripts.Mob
                 _currentState?.ExitState(this);
                 _currentState = value;
                 _currentState.EnterState(this);
-                
-                OnStateChanged?.Invoke(_currentState);
             }
         }
 
@@ -34,7 +31,7 @@ namespace _Survivor.Scripts.Mob
         public Hero Target { get; private set; }
 
         public MobSettings Settings => settings;
-        
+
         private void Start()
         {
             Controller = GetComponent<CharacterController>();
