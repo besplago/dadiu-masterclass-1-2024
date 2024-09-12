@@ -46,11 +46,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Survivor\Scripts\MobSettings.cs" />
+    <Compile Include="Assets\_Survivor\Scripts\IMobState.cs" />
     <Compile Include="Assets\_Survivor\TimeDebug.cs" />
     <Compile Include="Assets\_Survivor\Scripts\LevelConfig.cs" />
     <Compile Include="Assets\_Survivor\Scripts\MobSpawnPoint.cs" />
     <Compile Include="Assets\_Survivor\Scripts\HeroMotorSettings.cs" />
     <Compile Include="Assets\_Survivor\Scripts\LevelLoader.cs" />
+    <Compile Include="Assets\_Survivor\Scripts\ChaseState.cs" />
     <Compile Include="Assets\_Survivor\Scripts\HealthUI.cs" />
     <Compile Include="Assets\_Survivor\Scripts\SpawnPoint.cs" />
     <Compile Include="Assets\_Survivor\Scripts\HeroSpawnPoint.cs" />

@@ -8,17 +8,34 @@ namespace _Survivor.Scripts
     {
         public static readonly List<Mob> Actives = new List<Mob>();
 
-
         [SerializeField] private MobSettings settings;
 
-        private CharacterController _controller;
+        private IMobState _currentState;
 
-        private Hero _target;
+        public IMobState CurrentState
+        {
+            get => _currentState;
+            set
+            {
+                _currentState?.ExitState(this);
+
+                _currentState = value;
+                _currentState.EnterState(this);
+            }
+        }
+
+        public CharacterController Controller { get; private set; }
+
+        public Hero Target { get; private set; }
+
+        public MobSettings Settings => settings;
 
         private void Start()
         {
-            _controller = GetComponent<CharacterController>();
-            _target = Object.FindAnyObjectByType<Hero>();
+            Controller = GetComponent<CharacterController>();
+            Target = FindAnyObjectByType<Hero>();
+
+            CurrentState = new ChaseState();
         }
 
         private void OnEnable()
@@ -33,11 +50,14 @@ namespace _Survivor.Scripts
 
         private void Update()
         {
-            if (!_target) return;
-            var delta = _target.transform.position - transform.position;
-            if (!(delta.magnitude > 0)) return;
-            var motion = delta.normalized * (Time.deltaTime * settings.MoveSpeed);
-            _controller.Move(motion);
+            if (!Target) return;
+
+            _currentState?.UpdateState(this);
+        }
+
+        public void ChangeState(IMobState newState)
+        {
+            CurrentState = newState;
         }
     }
 }
