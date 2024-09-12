@@ -59,6 +59,7 @@
     <Compile Include="Assets\_Survivor\Scripts\HeroSpawnPoint.cs" />
     <Compile Include="Assets\_Survivor\Scripts\HeroDamager.cs" />
     <Compile Include="Assets\_Survivor\Scripts\Health.cs" />
+    <Compile Include="Assets\_Survivor\Scripts\Mob\AttackTelegraph.cs" />
     <Compile Include="Assets\_Survivor\Scripts\Hero.cs" />
     <Compile Include="Assets\_Survivor\Scripts\HeroMotor.cs" />
     <Compile Include="Assets\_Survivor\Scripts\GameOverScreen.cs" />

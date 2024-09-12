@@ -4,6 +4,7 @@ using UnityEngine;
 namespace _Survivor.Scripts.Mob
 {
     [RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(AttackTelegraph))]
     public class Mob : MonoBehaviour
     {
         public static readonly List<Mob> Actives = new();
@@ -11,15 +12,20 @@ namespace _Survivor.Scripts.Mob
         [SerializeField] private MobSettings settings;
 
         private IMobState _currentState;
+        
+        public static System.Action<IMobState> OnStateChanged;
 
         public IMobState CurrentState
         {
             get => _currentState;
             set
             {
+                if (_currentState == value) return;
                 _currentState?.ExitState(this);
                 _currentState = value;
                 _currentState.EnterState(this);
+                
+                OnStateChanged?.Invoke(_currentState);
             }
         }
 
@@ -28,7 +34,7 @@ namespace _Survivor.Scripts.Mob
         public Hero Target { get; private set; }
 
         public MobSettings Settings => settings;
-
+        
         private void Start()
         {
             Controller = GetComponent<CharacterController>();
