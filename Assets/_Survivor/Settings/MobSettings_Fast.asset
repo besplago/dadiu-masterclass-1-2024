@@ -17,3 +17,6 @@ MonoBehaviour:
   attackRange: 3
   attackTelegraphDuration: 1
   extraTelegraphLength: 3
+  attackAcceleration: 20
+  attackDeceleration: 20
+  attackMaxSpeed: 40

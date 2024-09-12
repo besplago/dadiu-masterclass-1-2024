@@ -27,6 +27,7 @@ namespace _Survivor.Scripts.Mob
         public CharacterController Controller { get; private set; }
 
         public Hero Target { get; private set; }
+        public Vector3 DashTarget { get; set; }
 
         public MobSettings Settings => settings;
 
@@ -36,6 +37,7 @@ namespace _Survivor.Scripts.Mob
         {
             Controller = GetComponent<CharacterController>();
             Target = FindAnyObjectByType<Hero>();
+            DashTarget = Target.transform.position;
             AttackTelegraph = GetComponentInChildren<AttackTelegraph>();
 
             CurrentState = new ChaseState();
