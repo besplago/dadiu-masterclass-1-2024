@@ -6,7 +6,8 @@ namespace _Survivor.Scripts
     [RequireComponent(typeof(CharacterController))]
     public class HeroMotor : MonoBehaviour
     {
-        [FormerlySerializedAs("_config")] [SerializeField] HeroMotorSettings config;
+        [FormerlySerializedAs("_config")] [SerializeField]
+        private HeroMotorSettings config;
 
         private CharacterController _controller;
 
@@ -19,21 +20,15 @@ namespace _Survivor.Scripts
 
         public void Update()
         {
+            Vector2 input = new() { x = Input.GetAxisRaw("Horizontal"), y = Input.GetAxisRaw("Vertical") };
 
-            Vector2 input = new() { x = Input.GetAxisRaw("Horizontal"), y = Input.GetAxisRaw("Vertical")};
-
-
-            Vector3 moveDirection = Vector3.right * input.x + Vector3.forward * input.y;
+            var moveDirection = Vector3.right * input.x + Vector3.forward * input.y;
 
             var right = Vector3.right;
             var forward = Vector3.forward;
 
-            var velocityOnRight = Vector3.Dot(_velocity, right);
-            var velocityOnForward = Vector3.Dot(_velocity, forward);
-        
-
-            var velocity = Mathf.MoveTowards(velocityOnRight, input.x, config.Accelleration * Time.deltaTime);
-
+            Vector3.Dot(_velocity, right);
+            Vector3.Dot(_velocity, forward);
 
             moveDirection.Normalize();
 
