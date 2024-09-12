@@ -6,26 +6,33 @@ namespace _Survivor.Scripts.Mob
     public class AttackTelegraph : MonoBehaviour
     {
         private Renderer _telegraphRenderer;
+        private Transform _parentTransform;
+        private const float ExtraTelegraphLength = 3.0f;
+        private Mob _mob;
 
         private void Awake()
         {
             _telegraphRenderer = GetComponent<Renderer>();
+            _parentTransform = transform.parent;
         }
 
         public void PlayAttackTelegraphAnimation(Mob mob)
         {
+            _mob = mob;
             _telegraphRenderer.enabled = true;
-            SetTelegraphVisual(mob.Target.transform);
-            StartCoroutine(BlinkAnimation(mob.Settings.attackTelegraphDuration));
+            SetTelegraphVisual();
+            StartCoroutine(BlinkAnimation(_mob.Settings.attackTelegraphDuration));
         }
 
-        private void SetTelegraphVisual(Transform target)
+        private void SetTelegraphVisual()
         {
-            var directionToTarget = target.position - transform.position;
-            transform.position += directionToTarget * 0.5f;
-            transform.LookAt(transform.position + directionToTarget);
-            transform.localScale =
-                new Vector3(transform.localScale.x, transform.localScale.y, directionToTarget.magnitude);
+            transform.position = _parentTransform.position;
+            var directionToTarget = _mob.Target.transform.position - transform.position;
+            transform.position += directionToTarget * (0.5f + ExtraTelegraphLength / 10.0f);
+            var newMagnitude = directionToTarget.magnitude + _mob.Settings.extraTelegraphLength;
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, newMagnitude);
+            transform.LookAt(transform.position +
+                             directionToTarget.normalized * (newMagnitude - directionToTarget.magnitude));
         }
 
         private IEnumerator BlinkAnimation(float duration)

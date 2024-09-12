@@ -16,3 +16,4 @@ MonoBehaviour:
   acceleration: 3
   attackRange: 3
   attackTelegraphDuration: 1
+  extraTelegraphLength: 3

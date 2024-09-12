@@ -17,7 +17,7 @@ namespace _Survivor.Scripts.Mob
 
             if (distance <= mob.Settings.attackRange)
             {
-                mob.ChangeState(new AttackState());
+                mob.ChangeState(new TelegraphingState());
                 return;
             }
 
