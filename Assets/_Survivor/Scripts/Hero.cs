@@ -1,44 +1,42 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
-[RequireComponent(typeof(HeroMotor))]
-public class Hero : MonoBehaviour
+namespace _Survivor.Scripts
 {
-    public static System.Action<Hero, float> DamageTaken;
-
-
-    [SerializeField] Health _health;
-    HeroMotor _motor;
-
-    public Health Health => _health;
-
-    public static Hero Instance;
-
-    void Awake()
+    [RequireComponent(typeof(HeroMotor))]
+    public class Hero : MonoBehaviour
     {
-        Instance = this;
+        public static System.Action<Hero, float> DamageTaken;
 
-        _motor = GetComponent<HeroMotor>();
 
-        _health.Died.AddListener(() => 
+        [FormerlySerializedAs("_health")] [SerializeField]
+        private Health health;
+
+        private HeroMotor _motor;
+
+        public Health Health => health;
+
+        public static Hero Instance;
+
+        private void Awake()
         {
-            _motor.enabled = false;
-        });
+            Instance = this;
 
-        _health.DamageTaken.AddListener(args =>
+            _motor = GetComponent<HeroMotor>();
+
+            health.Died.AddListener(() => { _motor.enabled = false; });
+
+            health.DamageTaken.AddListener(args => { DamageTaken?.Invoke(this, args.CurrentRatio); });
+        }
+
+        private void Start()
         {
-            DamageTaken?.Invoke(this, args.CurrentRatio);
-        });
+            DamageTaken?.Invoke(this, health.CurrentHealth);
+        }
 
-    
-    }
-
-    void Start()
-    {
-        DamageTaken?.Invoke(this, _health.CurrentHealth);
-    }
-
-    public void Teleport(Vector3 position, Quaternion rotation)
-    {
-        _motor.Teleport(position, rotation);
+        public void Teleport(Vector3 position, Quaternion rotation)
+        {
+            _motor.Teleport(position, rotation);
+        }
     }
 }
