@@ -1,34 +1,35 @@
-using _Survivor.Scripts;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class Level : MonoBehaviour
+namespace _Survivor.Scripts
 {
-    public static LevelConfig CurrentLevel { get; private set; }
-
-    [RuntimeInitializeOnLoadMethod]
-    static void ResetDomain()
+    public class Level : MonoBehaviour
     {
-        CurrentLevel = null;
+        public static LevelConfig CurrentLevel { get; private set; }
+
+        [RuntimeInitializeOnLoadMethod]
+        private static void ResetDomain()
+        {
+            CurrentLevel = null;
+        }
+
+        [SerializeField] private LevelConfig config;
+
+
+        private void Awake()
+        {
+            Assert.IsNotNull(config, "Missing level config");
+            CurrentLevel = config;
+        }
+
+        private void Start()
+        {
+            var hero = Hero.Instance;
+            Assert.IsNotNull(hero, "missing hero");
+
+            var spawnPoint = FindAnyObjectByType<HeroSpawnPoint>();
+            Assert.IsNotNull(spawnPoint, "Missing HeroSpawnPoint");
+            hero.Teleport(spawnPoint.transform.position, spawnPoint.transform.rotation);
+        }
     }
-
-    [SerializeField] LevelConfig _config;
-
-
-    void Awake()
-    {
-        Assert.IsNotNull(_config, "Missing level config");
-       CurrentLevel = _config;
-    }
-
-    void Start()
-    {
-        var hero = Hero.Instance;
-        Assert.IsNotNull(hero, "missing hero");
-
-        var spawnPoint = FindAnyObjectByType<HeroSpawnPoint>();
-        Assert.IsNotNull(spawnPoint, "Missing HeroSpawnPoint");
-        hero.Teleport(spawnPoint.transform.position, spawnPoint.transform.rotation);
-    }
-
 }

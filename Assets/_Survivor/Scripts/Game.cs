@@ -1,3 +1,4 @@
+using _Survivor.Scripts;
 using UnityEngine;
 
 public class Game : MonoBehaviour
