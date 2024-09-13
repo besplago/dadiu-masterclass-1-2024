@@ -16,7 +16,7 @@ namespace _Survivor.Scripts.Mob.States
                 dasher.Target.transform.position + directionToTarget * dasher.Settings.extraDashLength;
             dasher.DashTargetPosition = dashTargetPosition;
 
-            dasher.AttackTelegraph.PlayAttackTelegraphAnimation(dasher);
+            dasher.DashTelegraph.PlayAttackTelegraphAnimation(dasher);
             _elapsedTime = 0f;
             _telegraphing = true;
         }

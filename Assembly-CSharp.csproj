@@ -62,10 +62,10 @@
     <Compile Include="Assets\_Survivor\Scripts\SpawnPoint.cs" />
     <Compile Include="Assets\_Survivor\Scripts\Mob\MobSettings.cs" />
     <Compile Include="Assets\_Survivor\Scripts\HeroSpawnPoint.cs" />
+    <Compile Include="Assets\_Survivor\Scripts\Mob\DashTelegraph.cs" />
     <Compile Include="Assets\_Survivor\Scripts\HeroDamager.cs" />
     <Compile Include="Assets\_Survivor\Scripts\Mob\States\ChaseState.cs" />
     <Compile Include="Assets\_Survivor\Scripts\Health.cs" />
-    <Compile Include="Assets\_Survivor\Scripts\Mob\AttackTelegraph.cs" />
     <Compile Include="Assets\_Survivor\Scripts\Hero.cs" />
     <Compile Include="Assets\_Survivor\Scripts\Mob\States\RoamState.cs" />
     <Compile Include="Assets\_Survivor\Scripts\HeroMotor.cs" />

@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace _Survivor.Scripts.Mob
 {
-    public class AttackTelegraph : MonoBehaviour
+    public class DashTelegraph : MonoBehaviour
     {
         private Renderer _telegraphRenderer;
         private Transform _parentTransform;
