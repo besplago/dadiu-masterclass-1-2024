@@ -16,7 +16,7 @@ namespace _Survivor.Scripts.Mob
             if (_dasherSettings)
             {
                 var dashTargetPosition =
-                    mob.Target.transform.position + directionToTarget * _dasherSettings.extraTelegraphLength;
+                    mob.Target.transform.position + directionToTarget * _dasherSettings.extraDashLength;
                 mob.DashTarget = dashTargetPosition;
             }
 
@@ -29,12 +29,12 @@ namespace _Survivor.Scripts.Mob
         {
             if (!_telegraphing)
             {
-                mob.ChangeState(new AttackState());
+                mob.ChangeState(new DashState());
             }
             else
             {
                 _elapsedTime += Time.deltaTime;
-                if (_elapsedTime >= _dasherSettings.attackTelegraphDuration)
+                if (_elapsedTime >= _dasherSettings.dashTelegraphDuration)
                 {
                     _telegraphing = false;
                 }

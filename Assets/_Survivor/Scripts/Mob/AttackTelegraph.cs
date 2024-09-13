@@ -21,7 +21,7 @@ namespace _Survivor.Scripts.Mob
             _telegraphRenderer.enabled = true;
             SetTelegraphVisual(mob);
             _dasherSettings = mob.Settings as MobDasherSettings;
-            if (_dasherSettings) StartCoroutine(BlinkAnimation(_dasherSettings.attackTelegraphDuration));
+            if (_dasherSettings) StartCoroutine(BlinkAnimation(_dasherSettings.dashTelegraphDuration));
         }
 
         private void SetTelegraphVisual(Mob mob)
@@ -30,7 +30,7 @@ namespace _Survivor.Scripts.Mob
             var directionToTarget = mob.Target.transform.position - transform.position;
             transform.position += directionToTarget * (0.5f + ExtraTelegraphLength / 10.0f);
             if (!_dasherSettings) return;
-            var newMagnitude = directionToTarget.magnitude + _dasherSettings.extraTelegraphLength;
+            var newMagnitude = directionToTarget.magnitude + _dasherSettings.extraDashLength;
             transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, newMagnitude);
             transform.LookAt(transform.position +
                              directionToTarget.normalized * (newMagnitude - directionToTarget.magnitude));
