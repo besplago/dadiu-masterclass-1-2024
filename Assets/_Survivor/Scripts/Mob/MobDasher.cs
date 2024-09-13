@@ -7,6 +7,8 @@ namespace _Survivor.Scripts.Mob
         public Vector3 DashTargetPosition { get; set; }
         public AttackTelegraph AttackTelegraph { get; private set; }
 
+        public new MobDasherSettings Settings => (MobDasherSettings)base.Settings;
+
         protected override void Start()
         {
             base.Start();

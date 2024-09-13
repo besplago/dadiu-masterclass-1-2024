@@ -7,19 +7,14 @@ namespace _Survivor.Scripts.Mob.States
         private float _elapsedTime;
         private bool _telegraphing;
 
-        private MobDasherSettings _dasherSettings;
 
         public void EnterState(Mob mob)
         {
             if (mob is not MobDasher dasher) return;
-            _dasherSettings = dasher.Settings as MobDasherSettings;
             var directionToTarget = (dasher.Target.transform.position - dasher.transform.position).normalized;
-            if (_dasherSettings)
-            {
-                var dashTargetPosition =
-                    dasher.Target.transform.position + directionToTarget * _dasherSettings.extraDashLength;
-                dasher.DashTargetPosition = dashTargetPosition;
-            }
+            var dashTargetPosition =
+                dasher.Target.transform.position + directionToTarget * dasher.Settings.extraDashLength;
+            dasher.DashTargetPosition = dashTargetPosition;
 
             dasher.AttackTelegraph.PlayAttackTelegraphAnimation(dasher);
             _elapsedTime = 0f;
@@ -28,6 +23,7 @@ namespace _Survivor.Scripts.Mob.States
 
         public void UpdateState(Mob mob)
         {
+            if (mob is not MobDasher dasher) return;
             if (!_telegraphing)
             {
                 mob.ChangeState(new DashState());
@@ -35,7 +31,7 @@ namespace _Survivor.Scripts.Mob.States
             else
             {
                 _elapsedTime += Time.deltaTime;
-                if (_elapsedTime >= _dasherSettings.dashTelegraphDuration)
+                if (_elapsedTime >= dasher.Settings.dashTelegraphDuration)
                 {
                     _telegraphing = false;
                 }

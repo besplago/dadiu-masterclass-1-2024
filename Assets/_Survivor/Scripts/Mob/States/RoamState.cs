@@ -6,14 +6,12 @@ namespace _Survivor.Scripts.Mob.States
     {
         private const float RoamTime = 5f;
         private const float RoamRadius = 10f;
-        private float _elapsedTime = 0f;
+        private float _elapsedTime;
         private Vector3 _targetPosition;
         private float _moveSpeed;
-        private MobDasherSettings _dasherSettings;
 
         public void EnterState(Mob mob)
         {
-            _dasherSettings = mob.Settings as MobDasherSettings;
             _elapsedTime = 0f;
             SetNewRoamTarget(mob);
         }
@@ -48,13 +46,13 @@ namespace _Survivor.Scripts.Mob.States
 
             if (mob is MobDasher dasher)
             {
-                _moveSpeed = _dasherSettings.roamSpeed; // TODO: Dasher Settings should come from the MobDasher class 
+                _moveSpeed = dasher.Settings.roamSpeed;
             }
         }
 
         private void MoveTowardsRoamTarget(Mob mob)
         {
-            Vector3 direction = (_targetPosition - mob.transform.position).normalized;
+            var direction = (_targetPosition - mob.transform.position).normalized;
             mob.transform.position += direction * (_moveSpeed * Time.deltaTime);
         }
     }

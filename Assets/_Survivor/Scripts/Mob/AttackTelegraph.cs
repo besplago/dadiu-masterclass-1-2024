@@ -7,8 +7,6 @@ namespace _Survivor.Scripts.Mob
     {
         private Renderer _telegraphRenderer;
         private Transform _parentTransform;
-        private const float ExtraTelegraphLength = 3.0f;
-        private MobDasherSettings _dasherSettings;
 
         private void Awake()
         {
@@ -18,10 +16,10 @@ namespace _Survivor.Scripts.Mob
 
         public void PlayAttackTelegraphAnimation(Mob mob)
         {
+            if (mob is not MobDasher dasher) return;
             _telegraphRenderer.enabled = true;
             SetTelegraphVisual(mob);
-            _dasherSettings = mob.Settings as MobDasherSettings;
-            if (_dasherSettings) StartCoroutine(BlinkAnimation(_dasherSettings.dashTelegraphDuration));
+            StartCoroutine(BlinkAnimation(dasher.Settings.dashTelegraphDuration));
         }
 
         private void SetTelegraphVisual(Mob mob)
