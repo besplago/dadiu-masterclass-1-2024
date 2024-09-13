@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3
   acceleration: 2
-  attackTelegraphDuration: 1
-  extraTelegraphLength: 10
-  attackAcceleration: 100
-  attackDeceleration: 20
-  attackMaxSpeed: 100
+  dashTelegraphDuration: 1
+  extraDashLength: 10
+  dashAcceleration: 100
+  dashDeceleration: 20
+  dashMaxSpeed: 100
   attackRange: 5
+  roamSpeed: 2

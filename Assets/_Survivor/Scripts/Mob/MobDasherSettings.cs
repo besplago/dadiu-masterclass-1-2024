@@ -12,5 +12,6 @@ namespace _Survivor.Scripts.Mob
         [FormerlySerializedAs("attackDeceleration")] [SerializeField] public float dashDeceleration;
         [FormerlySerializedAs("attackMaxSpeed")] [SerializeField] public float dashMaxSpeed;
         [SerializeField] public float attackRange;
+        [SerializeField] public float roamSpeed;
     }
 }

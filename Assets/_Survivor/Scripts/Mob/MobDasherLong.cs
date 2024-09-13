@@ -1,4 +1,6 @@
-﻿namespace _Survivor.Scripts.Mob
+﻿using _Survivor.Scripts.Mob.States;
+
+namespace _Survivor.Scripts.Mob
 {
     public class MobDasherLong : MobDasher
     {

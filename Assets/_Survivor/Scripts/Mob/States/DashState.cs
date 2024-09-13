@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Survivor.Scripts.Mob
+namespace _Survivor.Scripts.Mob.States
 {
     public class DashState : IMobState
     {
@@ -23,7 +23,15 @@ namespace _Survivor.Scripts.Mob
 
             if (Vector3.Distance(dasher.transform.position, dasher.DashTargetPosition) <= TargetProximityThreshold)
             {
-                dasher.ChangeState(new CooldownState());
+                switch (dasher)
+                {
+                    case MobDasherShort:
+                        dasher.ChangeState(new CooldownState());
+                        break;
+                    case MobDasherLong:
+                        dasher.ChangeState(new RoamState());
+                        break;
+                }
             }
         }
 

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using _Survivor.Scripts.Mob.States;
 using UnityEngine;
 
 namespace _Survivor.Scripts.Mob

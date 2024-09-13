@@ -1,4 +1,4 @@
-﻿namespace _Survivor.Scripts.Mob
+﻿namespace _Survivor.Scripts.Mob.States
 {
     public interface IMobState
     {
