@@ -1,8 +1,6 @@
-﻿using UnityEngine;
-
-namespace _Survivor.Scripts.Mob
+﻿namespace _Survivor.Scripts.Mob
 {
-    public class MobDasherLong : Mob
+    public class MobDasherLong : MobDasher
     {
         protected override void Start()
         {

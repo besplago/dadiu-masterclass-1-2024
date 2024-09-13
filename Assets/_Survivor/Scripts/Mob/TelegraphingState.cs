@@ -11,16 +11,17 @@ namespace _Survivor.Scripts.Mob
 
         public void EnterState(Mob mob)
         {
-            _dasherSettings = mob.Settings as MobDasherSettings;
-            var directionToTarget = (mob.Target.transform.position - mob.transform.position).normalized;
+            if (mob is not MobDasher dasher) return;
+            _dasherSettings = dasher.Settings as MobDasherSettings;
+            var directionToTarget = (dasher.Target.transform.position - dasher.transform.position).normalized;
             if (_dasherSettings)
             {
                 var dashTargetPosition =
-                    mob.Target.transform.position + directionToTarget * _dasherSettings.extraDashLength;
-                mob.DashTarget = dashTargetPosition;
+                    dasher.Target.transform.position + directionToTarget * _dasherSettings.extraDashLength;
+                dasher.DashTarget = dashTargetPosition;
             }
 
-            mob.AttackTelegraph.PlayAttackTelegraphAnimation(mob);
+            dasher.AttackTelegraph.PlayAttackTelegraphAnimation(dasher);
             _elapsedTime = 0f;
             _telegraphing = true;
         }

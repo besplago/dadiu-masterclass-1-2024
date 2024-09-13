@@ -1,6 +1,6 @@
 ﻿namespace _Survivor.Scripts.Mob
 {
-    public class MobDasherShort : Mob
+    public class MobDasherShort : MobDasher
     {
         protected override void Start()
         {

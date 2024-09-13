@@ -18,11 +18,12 @@ namespace _Survivor.Scripts.Mob
 
         public void UpdateState(Mob mob)
         {
-            DashMovement(mob);
+            if (mob is not MobDasher dasher) return;
+            DashMovement(dasher);
 
-            if (Vector3.Distance(mob.transform.position, mob.DashTarget) <= TargetProximityThreshold)
+            if (Vector3.Distance(dasher.transform.position, dasher.DashTarget) <= TargetProximityThreshold)
             {
-                mob.ChangeState(new CooldownState());
+                dasher.ChangeState(new CooldownState());
             }
         }
 
@@ -32,7 +33,8 @@ namespace _Survivor.Scripts.Mob
 
         private void DashMovement(Mob mob)
         {
-            var direction = (mob.DashTarget - mob.transform.position).normalized;
+            if (mob is not MobDasher dasher) return;
+            var direction = (dasher.DashTarget - dasher.transform.position).normalized;
 
             if (_accelerating)
             {
@@ -45,7 +47,7 @@ namespace _Survivor.Scripts.Mob
             }
             else
             {
-                if (Vector3.Distance(mob.transform.position, mob.DashTarget) <= _dasherSettings.dashMaxSpeed * Time.deltaTime)
+                if (Vector3.Distance(dasher.transform.position, dasher.DashTarget) <= _dasherSettings.dashMaxSpeed * Time.deltaTime)
                 {
                     _dashSpeed -= _dasherSettings.dashDeceleration * Time.deltaTime;
                     if (_dashSpeed <= 0f)
@@ -55,7 +57,7 @@ namespace _Survivor.Scripts.Mob
                 }
             }
 
-            mob.transform.position += direction * (_dashSpeed * Time.deltaTime);
+            dasher.transform.position += direction * (_dashSpeed * Time.deltaTime);
         }
     }
 }

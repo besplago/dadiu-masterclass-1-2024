@@ -53,6 +53,7 @@
     <Compile Include="Assets\_Survivor\Scripts\Mob\MobDasherSettings.cs" />
     <Compile Include="Assets\_Survivor\Scripts\MobSpawnPoint.cs" />
     <Compile Include="Assets\_Survivor\Scripts\HeroMotorSettings.cs" />
+    <Compile Include="Assets\_Survivor\Scripts\Mob\MobDasher.cs" />
     <Compile Include="Assets\_Survivor\Scripts\Mob\MobDasherLong.cs" />
     <Compile Include="Assets\_Survivor\Scripts\LevelLoader.cs" />
     <Compile Include="Assets\_Survivor\Scripts\Mob\ChaseState.cs" />
