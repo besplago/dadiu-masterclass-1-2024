@@ -21,7 +21,7 @@ namespace _Survivor.Scripts.Mob
             if (mob is not MobDasher dasher) return;
             DashMovement(dasher);
 
-            if (Vector3.Distance(dasher.transform.position, dasher.DashTarget) <= TargetProximityThreshold)
+            if (Vector3.Distance(dasher.transform.position, dasher.DashTargetPosition) <= TargetProximityThreshold)
             {
                 dasher.ChangeState(new CooldownState());
             }
@@ -34,7 +34,7 @@ namespace _Survivor.Scripts.Mob
         private void DashMovement(Mob mob)
         {
             if (mob is not MobDasher dasher) return;
-            var direction = (dasher.DashTarget - dasher.transform.position).normalized;
+            var direction = (dasher.DashTargetPosition - dasher.transform.position).normalized;
 
             if (_accelerating)
             {
@@ -47,7 +47,7 @@ namespace _Survivor.Scripts.Mob
             }
             else
             {
-                if (Vector3.Distance(dasher.transform.position, dasher.DashTarget) <= _dasherSettings.dashMaxSpeed * Time.deltaTime)
+                if (Vector3.Distance(dasher.transform.position, dasher.DashTargetPosition) <= _dasherSettings.dashMaxSpeed * Time.deltaTime)
                 {
                     _dashSpeed -= _dasherSettings.dashDeceleration * Time.deltaTime;
                     if (_dashSpeed <= 0f)

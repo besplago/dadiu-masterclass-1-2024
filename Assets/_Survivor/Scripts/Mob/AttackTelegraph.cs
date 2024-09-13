@@ -26,14 +26,17 @@ namespace _Survivor.Scripts.Mob
 
         private void SetTelegraphVisual(Mob mob)
         {
-            transform.position = _parentTransform.position;
-            var directionToTarget = mob.Target.transform.position - transform.position;
-            transform.position += directionToTarget * (0.5f + ExtraTelegraphLength / 10.0f);
-            if (!_dasherSettings) return;
-            var newMagnitude = directionToTarget.magnitude + _dasherSettings.extraDashLength;
-            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, newMagnitude);
-            transform.LookAt(transform.position +
-                             directionToTarget.normalized * (newMagnitude - directionToTarget.magnitude));
+            if (mob is not MobDasher dasher) return;
+            var startPosition = _parentTransform.position;
+            var endPosition = dasher.DashTargetPosition;
+            var midPointPosition = (startPosition + endPosition) / 2f;
+            transform.position = midPointPosition;
+            
+            var distance = Vector3.Distance(startPosition, endPosition);
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, distance);
+            
+            var direction = (startPosition - endPosition).normalized;
+            transform.rotation = Quaternion.LookRotation(direction);
         }
 
         private IEnumerator BlinkAnimation(float duration)

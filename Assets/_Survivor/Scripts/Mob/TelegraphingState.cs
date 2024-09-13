@@ -6,7 +6,7 @@ namespace _Survivor.Scripts.Mob
     {
         private float _elapsedTime;
         private bool _telegraphing;
-        
+
         private MobDasherSettings _dasherSettings;
 
         public void EnterState(Mob mob)
@@ -18,7 +18,7 @@ namespace _Survivor.Scripts.Mob
             {
                 var dashTargetPosition =
                     dasher.Target.transform.position + directionToTarget * _dasherSettings.extraDashLength;
-                dasher.DashTarget = dashTargetPosition;
+                dasher.DashTargetPosition = dashTargetPosition;
             }
 
             dasher.AttackTelegraph.PlayAttackTelegraphAnimation(dasher);
