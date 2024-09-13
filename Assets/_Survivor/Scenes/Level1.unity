@@ -183,7 +183,7 @@ PrefabInstance:
     - target: {fileID: 5042281181445868253, guid: 2670e68b9c3bd4e478eff91e91a2031a,
         type: 3}
       propertyPath: m_Name
-      value: Mob_Dasher (5)
+      value: Mob_Dasher_Long (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -387,7 +387,7 @@ PrefabInstance:
     - target: {fileID: 5042281181445868253, guid: 2670e68b9c3bd4e478eff91e91a2031a,
         type: 3}
       propertyPath: m_Name
-      value: Mob_Dasher (1)
+      value: Mob_Dasher_Long (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1894,7 +1894,7 @@ PrefabInstance:
     - target: {fileID: 5042281181445868253, guid: 2670e68b9c3bd4e478eff91e91a2031a,
         type: 3}
       propertyPath: m_Name
-      value: Mob_Dasher (4)
+      value: Mob_Dasher_Long (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1962,7 +1962,7 @@ PrefabInstance:
     - target: {fileID: 5042281181445868253, guid: 2670e68b9c3bd4e478eff91e91a2031a,
         type: 3}
       propertyPath: m_Name
-      value: Mob_Dasher
+      value: Mob_Dasher_Long
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2074,7 +2074,7 @@ PrefabInstance:
     - target: {fileID: 5042281181445868253, guid: 2670e68b9c3bd4e478eff91e91a2031a,
         type: 3}
       propertyPath: m_Name
-      value: Mob_Dasher (2)
+      value: Mob_Dasher_Long (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2946,7 +2946,7 @@ PrefabInstance:
     - target: {fileID: 5042281181445868253, guid: 2670e68b9c3bd4e478eff91e91a2031a,
         type: 3}
       propertyPath: m_Name
-      value: Mob_Dasher (3)
+      value: Mob_Dasher_Long (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
