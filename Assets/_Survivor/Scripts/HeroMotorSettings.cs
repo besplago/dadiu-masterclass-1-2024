@@ -1,9 +1,18 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
-[CreateAssetMenu(menuName = "Gameplay/CharacterMotorSettings")]
-public class HeroMotorSettings : ScriptableObject
+namespace _Survivor.Scripts
 {
-    public float MaxSpeed = 10;
-    public float Accelleration = 5;
+    [CreateAssetMenu(menuName = "Gameplay/CharacterMotorSettings")]
+    public class HeroMotorSettings : ScriptableObject
+    {
+        [FormerlySerializedAs("MaxSpeed")] public float maxSpeed = 10;
 
+        [FormerlySerializedAs("Accelleration")]
+        public float acceleration = 5;
+
+        public float dashTime = 0.2f;
+        public float dashSpeedMultiplier = 2f;
+        public float dashCooldown = 1f;
+    }
 }

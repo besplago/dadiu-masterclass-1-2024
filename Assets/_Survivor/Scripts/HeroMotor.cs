@@ -10,8 +10,10 @@ namespace _Survivor.Scripts
         private HeroMotorSettings config;
 
         private CharacterController _controller;
-
         private Vector3 _velocity;
+
+        private bool _isDashing;
+        private float _lastDashTime = -1f;
 
         private void Awake()
         {
@@ -23,16 +25,27 @@ namespace _Survivor.Scripts
             Vector2 input = new() { x = Input.GetAxisRaw("Horizontal"), y = Input.GetAxisRaw("Vertical") };
 
             var moveDirection = Vector3.right * input.x + Vector3.forward * input.y;
-
-            var right = Vector3.right;
-            var forward = Vector3.forward;
-
-            Vector3.Dot(_velocity, right);
-            Vector3.Dot(_velocity, forward);
-
             moveDirection.Normalize();
 
-            _controller.Move(moveDirection * (config.MaxSpeed * Time.deltaTime));
+            if (Input.GetKeyDown(KeyCode.LeftShift) && Time.time > _lastDashTime + config.dashCooldown)
+            {
+                _isDashing = true;
+                _lastDashTime = Time.time;
+            }
+
+            if (_isDashing)
+            {
+                _controller.Move(moveDirection * (config.maxSpeed * config.dashSpeedMultiplier * Time.deltaTime));
+
+                if (Time.time >= _lastDashTime + config.dashTime)
+                {
+                    _isDashing = false;
+                }
+            }
+            else
+            {
+                _controller.Move(moveDirection * (config.maxSpeed * Time.deltaTime));
+            }
         }
 
         private void OnControllerColliderHit(ControllerColliderHit hit)
